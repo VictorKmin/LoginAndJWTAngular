@@ -1,5 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
+import {forEach} from '@angular/router/src/utils/collection';
 
 @Component({
   selector: 'app-users-page',
@@ -7,15 +8,12 @@ import {UserService} from '../user.service';
   styleUrls: ['./users-page.component.css']
 })
 export class UsersPageComponent implements OnInit {
-  users = [];
   constructor(private userService: UserService) { }
+  users;
 
   ngOnInit() {
     this.userService.getUsers().subscribe(users => {
-      // this.users = users;
-      console.log('______________');
-      console.log(users);
-      console.log('______________');
+      this.users = users;
     });
   }
 }

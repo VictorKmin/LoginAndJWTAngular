@@ -1,21 +1,21 @@
 <div style="width: 100%">
   <div style="width: 20%; margin-left: 20%">
     <h5>REGISTRATION PAGE</h5>
-    <form action="/register" method="post" enctype="multipart/form-data">
-      <input type="text" name="name"> Name <br>
-      <input type="password" name="password"> Password <br>
-      <input type="email" name="email"> Email <br>
-      <input type="file" name="file"> Image <br>
-      <input type="submit" value="Register me" style="background-color: khaki">
+    <form #registerUserForm = ngForm>
+      <input type="text" name="name" ngModel> Name <br>
+      <input type="password" name="password" ngModel> Password <br>
+      <input type="email" name="email" ngModel> Email <br>
+      <input type="file" name="file" ngModel> Image <br>
+      <input type="submit" value="Register me" style="background-color: khaki"  routerLink="/register" (click)="createUserForm(registerUserForm.value)">
     </form>
 
     <br><br><br>
 
     <h5>LOGIN PAGE</h5>
-    <form action="/welcome" method="post">
-      <input type="text" name="name"> User Name <br>
-      <input type="password" name="password"> Password <br>
-      <input type="submit" value="Login!" style="background-color: khaki">
+    <form #loginUserForm = ngForm>
+      <input type="text" name="name" ngModel> User Name <br>
+      <input type="password" name="password" ngModel> Password <br>
+      <input type="submit" value="Login!" style="background-color: khaki" routerLink="/login" (click)="loginUser(loginUserForm.value)">
     </form>
 
     <!--<br><br>-->
