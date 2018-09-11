@@ -1,0 +1,25 @@
+<h5>LOGIN PAGE</h5>
+<div id = errorDiv>
+  {{resp.message}}
+</div>
+
+<div id = successDiv>
+  <!--{{resp.accessToken}}-->
+  Welcome to our site
+</div>
+
+
+<form #loginUserForm = ngForm>
+  <input type="text" name="name" ngModel> User Name <br>
+  <input type="password" name="password" ngModel> Password <br>
+  <input type="submit" value="Login!" style="background-color: khaki" (click)="loginUser(loginUserForm.value)">
+</form>
+<button routerLink="/reset">Forgot Password</button>
+
+<br><br>
+<button  style="background-color: cornflowerblue" (click)="signInWithFB()"> Facebook</button>
+
+
+<br><br>
+<button  style="background-color: snow" (click)="signInWithGoogle()"> Google</button>
+<br><br><br>

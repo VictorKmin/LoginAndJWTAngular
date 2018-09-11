@@ -1,4 +1,4 @@
-import {Component} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserService} from '../user.service';
 
 @Component({
@@ -6,22 +6,18 @@ import {UserService} from '../user.service';
   templateUrl: './home-page.component.html',
   styleUrls: ['./home-page.component.css']
 })
-export class HomePageComponent {
+export class HomePageComponent implements OnInit {
 
   constructor(private userService: UserService) {
+    console.log('___________________');
+    console.log(localStorage.length);
+    console.log('___________________');
   }
-
-  createUserForm = user => {
-    console.log(user);
-    return this.userService.createUser(user).subscribe((res: Response) => {
-      console.log(res);
-    });
-  }
-
-  loginUser = (user) => {
-    console.log(user);
-   return this.userService.loginUser(user).subscribe((res: Response) => {
-     console.log(res);
-   });
-  }
+ ngOnInit() {
+    if (localStorage.length === 0) {
+      document.getElementById('loginDiv').style.visibility = 'visible';
+    } else {
+      document.getElementById('logoutDiv').style.visibility = 'visible';
+    }
+ }
 }

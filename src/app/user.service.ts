@@ -1,6 +1,5 @@
 import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
-import {map} from 'rxjs/operators';
 
 @Injectable()
 export class UserService {
@@ -8,7 +7,7 @@ export class UserService {
   }
 
   getUsers() {
-    const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MjQsImlhdCI6MTUzNjMzMTk1NiwiZXhwIjoxNjM2MzMxOTU1fQ.SCMWO8W-0fhw0YVM22dQNTn3Oasv6KF_UZkU6I_OJxs';
+    const token = localStorage.getItem('accessToken');
     const headers = new HttpHeaders()
       .set('Content-Type', 'application/json')
       .set('authorization', token);
@@ -23,4 +22,22 @@ export class UserService {
   loginUser(user) {
     return this.http.post('http://localhost:3000/welcome', user);
   }
+  loginUserWithFacebooc() {
+    return this.http.get('http://localhost:3000//auth/facebook/callback');
+  }
+  loginUserWirhGoogle() {
+    return this.http.get('http://localhost:3000/auth/google');
+  }
+
+  resetPassword(email) {
+    return this.http.post('http://localhost:3000/auth/reset', email);
+  }
+
+  logoutUser(token: string) {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('authorization', token);
+    return this.http.get(`http://localhost:3000/logout`, {headers});
+  }
+}
 

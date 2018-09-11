@@ -1,4 +1,5 @@
-import {Component} from '@angular/core';
+import {Component, Input} from '@angular/core';
+import {UserService} from '../user.service';
 
 @Component({
   selector: 'app-create-user',
@@ -6,6 +7,15 @@ import {Component} from '@angular/core';
   styleUrls: ['./create-user.component.css']
 })
 export class CreateUserComponent {
-  constructor() {
+
+  resp;
+  constructor(private userService: UserService) {
+  }
+  createUserForm = user => {
+    console.log(user);
+    this.userService.createUser(user).subscribe((res: Response) => {
+      this.resp = res;
+      console.log(res);
+    });
   }
 }
