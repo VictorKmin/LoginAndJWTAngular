@@ -30,8 +30,9 @@ const routes = [
   {path: 'users', component: UsersPageComponent},
   {path: 'register', component: CreateUserComponent},
   {path: 'login', component: LoginPageComponent},
-  {path: 'reset', component: ResetPasswordComponent},
   {path: 'logout', component: LogoutComponent},
+  {path: 'reset', component: ResetPasswordComponent},
+  {path: 'update', component: UpdateUserComponent},
 ];
 
 

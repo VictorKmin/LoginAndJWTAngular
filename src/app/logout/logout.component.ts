@@ -7,13 +7,13 @@ import {UserService} from '../user.service';
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
-
+resp;
   constructor(private userService: UserService) { }
 
   ngOnInit() {
     const token = localStorage.getItem('accessToken');
     this.userService.logoutUser(token).subscribe((res: Response) => {
-      console.log(res);
+      this.resp = res;
     });
     localStorage.clear();
   }

@@ -8,10 +8,7 @@ import {UserService} from '../user.service';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor(private userService: UserService) {
-    console.log('___________________');
-    console.log(localStorage.length);
-    console.log('___________________');
+  constructor() {
   }
  ngOnInit() {
     if (localStorage.length === 0) {

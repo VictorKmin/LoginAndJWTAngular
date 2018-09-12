@@ -16,6 +16,17 @@ export class UserService {
   }
 
   createUser(user) {
+    const headers = new XMLHttpRequest()
+      // .setRequestHeader('enctype', 'application/x-www-form-urlencoded');
+    headers.setRequestHeader('enctype', 'multipart/form-data');
+
+// IE workaround for Cache issues
+    headers.setRequestHeader('Cache-Control', 'no-cache');
+    headers.setRequestHeader('Cache-Control', 'no-store');
+    headers.setRequestHeader('Pragma', 'no-cache');
+    console.log('______________++++++++++++++________________');
+    console.log(user);
+    console.log('______________++++++++++++++________________');
     return this.http.post('http://localhost:3000/register', user);
   }
 
@@ -39,5 +50,10 @@ export class UserService {
       .set('authorization', token);
     return this.http.get(`http://localhost:3000/logout`, {headers});
   }
+  updateUser(token, user) {
+    const headers = new HttpHeaders()
+      .set('Content-Type', 'application/json')
+      .set('authorization', token);
+    return this.http.put(`http://localhost:3000/update`, user, {headers});
+  }
 }
-

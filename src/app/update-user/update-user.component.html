@@ -1,12 +1,11 @@
 <div style="width: 50%; margin-left: 100px">
-  <h5>REGISTRATION PAGE</h5>
-  <!--<span style="color:red; font-weight: bolder; text-align: center">{{resp.message}}</span>-->
-  <form #registerUserForm=ngForm>
+  <h5>Update your account</h5>
+  <span style="color:red; font-weight: bolder; text-align: center">{{resp.message}}</span>
+  <form #updateUserForm=ngForm>
     <input type="text" name="name" ngModel> Name <br>
     <input type="password" name="password" ngModel> Password <br>
     <input type="email" name="email" ngModel> Email <br>
-    <input type="file" name="file" ngModel="" (change)="onFileChanged($event)"> Image <br>
     <input type="submit" value="Register me" style="background-color: khaki"
-           (click)="createUserForm(registerUserForm.value)">
+           (click)="updateUser(updateUserForm.value)">
   </form>
 </div>
